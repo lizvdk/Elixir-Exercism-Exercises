@@ -8,5 +8,6 @@ defmodule Acronym do
     String.split(string)
     |> Enum.map(fn(word) -> String.first(word) end)
     |> List.to_string
+    |> String.upcase
   end
 end
