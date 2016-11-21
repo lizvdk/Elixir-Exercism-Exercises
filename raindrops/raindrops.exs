@@ -10,11 +10,20 @@ defmodule Raindrops do
   """
   @spec convert(pos_integer) :: String.t
   def convert(number) do
-    cond do
-      rem(number, 3) == 0 -> "Pling"
-      rem(number, 5) == 0 -> "Plang"
-      rem(number, 7) == 0 -> "Plong"
-      true -> Integer.to_string(number)
+    rem_3 = { rem(number, 3) == 0, "Pling" }
+    rem_5 = { rem(number, 5) == 0, "Plang" }
+    rem_7 = { rem(number, 7) == 0, "Plong" }
+    remainders = [ rem_3, rem_5, rem_7 ]
+
+    raindrops =
+      Enum.map(remainders, fn(x) ->if elem(x, 0) == true do elem(x,1) end end)
+      |> Enum.filter(fn(x) -> x end)
+      |> List.to_string
+
+    if String.length(raindrops) > 0 do
+      raindrops
+    else
+      Integer.to_string(number)
     end
   end
 end
