@@ -11,6 +11,7 @@ defmodule Raindrops do
   @spec convert(pos_integer) :: String.t
   def convert(number) do
     cond do
+      rem(number, 3) == 0 -> "Pling"
       true -> Integer.to_string(number)
     end
   end
