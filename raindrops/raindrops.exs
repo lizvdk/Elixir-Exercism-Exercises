@@ -13,6 +13,7 @@ defmodule Raindrops do
     cond do
       rem(number, 3) == 0 -> "Pling"
       rem(number, 5) == 0 -> "Plang"
+      rem(number, 7) == 0 -> "Plong"
       true -> Integer.to_string(number)
     end
   end

@@ -23,7 +23,7 @@ defmodule RaindropsTest do
     assert Raindrops.convert(5) == "Plang"
   end
 
-  @tag :pending
+  # @tag :pending
   test "7" do
     assert Raindrops.convert(7) == "Plong"
   end
