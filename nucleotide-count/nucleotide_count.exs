@@ -34,6 +34,6 @@ defmodule NucleotideCount do
   """
   @spec histogram([char]) :: map
   def histogram(strand) do
-    Map.new(@nucleotides, fn(x) -> {x,  NucleotideCount.count(strand, x)} end)
+    Map.new(@nucleotides, fn(x) -> {x, count(strand, x)} end)
   end
 end
