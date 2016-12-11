@@ -9,11 +9,8 @@ defmodule Words do
     words =
       sentence
       |> String.downcase
-      |> String.replace(~r/[^-\w]/, " ")
-      |> String.replace("_", " ")
-      |> String.split
-      |> Enum.filter(fn(x) -> String.length(x) >0 end)
-    Map.new(words, fn(x) -> {x, occurrence_of_word(x, words)} end)
+      |> String.split(~r/[^\d\p{L}-]+/u, trim: true)
+    Map.new(words, fn(x) -> { x, occurrence_of_word(x, words) } end)
   end
 
   defp occurrence_of_word(word, words) do
