@@ -10,7 +10,7 @@ defmodule Words do
       sentence
       |> String.downcase
       |> String.split(~r/[^\d\p{L}-]+/u, trim: true)
-    Map.new(words, fn(x) -> { x, occurrence_of_word(x, words) } end)
+    Map.new(words, fn(word) -> { word, occurrence_of_word(word, words) } end)
   end
 
   defp occurrence_of_word(word, words) do
